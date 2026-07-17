@@ -1,0 +1,45 @@
+<div class="relative w-full aspect-square">
+	<svg viewBox="0 0 400 400" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+				<stop offset="0%" style="stop-color: var(--color-primary, #adc6ff); stop-opacity: 0.6" />
+				<stop offset="100%" style="stop-color: var(--color-primary, #adc6ff); stop-opacity: 0.05" />
+			</linearGradient>
+		</defs>
+
+		<line x1="60" y1="80" x2="200" y2="150" stroke="url(#lineGrad)" stroke-width="1.5" />
+		<line x1="200" y1="150" x2="340" y2="90" stroke="url(#lineGrad)" stroke-width="1.5" />
+		<line x1="200" y1="150" x2="150" y2="280" stroke="url(#lineGrad)" stroke-width="1.5" />
+		<line x1="150" y1="280" x2="300" y2="320" stroke="url(#lineGrad)" stroke-width="1.5" />
+		<line x1="150" y1="280" x2="60" y2="340" stroke="url(#lineGrad)" stroke-width="1.5" />
+		<line x1="200" y1="150" x2="330" y2="230" stroke="url(#lineGrad)" stroke-width="1.5" />
+
+		<circle cx="60" cy="80" r="4" style="fill: var(--color-primary, #adc6ff); opacity: 0.5" />
+		<circle cx="340" cy="90" r="4" style="fill: var(--color-primary, #adc6ff); opacity: 0.5" />
+		<circle cx="330" cy="230" r="4" style="fill: var(--color-primary, #adc6ff); opacity: 0.5" />
+		<circle cx="300" cy="320" r="4" style="fill: var(--color-primary, #adc6ff); opacity: 0.5" />
+		<circle cx="60" cy="340" r="4" style="fill: var(--color-primary, #adc6ff); opacity: 0.5" />
+
+		<circle cx="200" cy="150" r="7" style="fill: var(--color-primary, #adc6ff)" class="pulse-node" />
+		<circle cx="150" cy="280" r="7" style="fill: var(--color-primary, #adc6ff)" class="pulse-node" style="animation-delay: 1s" />
+	</svg>
+</div>
+
+<style>
+	.pulse-node {
+		animation: pulse 2.5s ease-in-out infinite;
+		transform-origin: center;
+		transform-box: fill-box;
+	}
+
+	@keyframes pulse {
+		0%, 100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.4;
+			transform: scale(1.6);
+		}
+	}
+</style>

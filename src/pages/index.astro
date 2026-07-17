@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HeroGraphic from '../components/HeroGraphic.astro';
 
 const services = [
 	{
@@ -28,39 +29,51 @@ const services = [
 
 
 <Layout>
-	<section class="max-w-5xl mx-auto px-6 py-20">
-		<div class="reveal inline-flex items-center gap-2 mb-6 px-3 py-1 border border-primary/30 rounded-full">
-			<span class="w-2 h-2 rounded-full bg-primary"></span>
-			<span class="font-mono text-xs uppercase tracking-widest text-primary">Disponible</span>
+	<section class="max-w-5xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+		<div>
+			<div class="reveal inline-flex items-center gap-2 mb-6 px-3 py-1 border border-primary/30 rounded-full">
+				<span class="w-2 h-2 rounded-full bg-primary"></span>
+				<span class="font-mono text-xs uppercase tracking-widest text-primary">Disponible</span>
+			</div>
+
+			<h1 class="reveal text-5xl md:text-6xl font-bold text-on-surface mb-6 leading-tight" style="transition-delay: 100ms">
+				Rodrigo Linares
+			</h1>
+
+			<p class="reveal text-xl text-on-surface-variant max-w-2xl mb-8" style="transition-delay: 200ms">
+				Soporte técnico y automatización — especializado en ERP, facturación electrónica y scripts que ahorran horas de trabajo manual.
+			</p>
+
+			<div class="reveal flex gap-4" style="transition-delay: 300ms">
+				<a href="/proyectos" class="px-6 py-3 bg-primary text-on-primary font-mono text-sm rounded-lg hover:opacity-90 transition-opacity">
+					Ver proyectos
+				</a>
+				<a href="/contacto" class="px-6 py-3 border border-outline-variant text-on-surface font-mono text-sm rounded-lg hover:border-primary transition-colors">
+					Contacto
+				</a>
+			</div>
 		</div>
 
-		<h1 class=" reveal text-5xl md:text-6xl font-bold text-on-surface mb-6 leading-tight" style="transition-delay: 100ms">
-			Rodrigo Linares
-		</h1>
-
-		<p class="reveal text-xl text-on-surface-variant max-w-2xl mb-8" style="transition-delay: 200ms">
-			Soporte técnico y automatización — especializado en ERP, facturación electrónica y scripts que ahorran horas de trabajo manual.
-		</p>
-
-		<div class="reveal flex gap-4" style="transition-delay: 300ms">
-			<a href="/proyectos" class="px-6 py-3 bg-primary text-on-primary font-mono text-sm rounded-lg hover:opacity-90 transition-opacity">
-				Ver proyectos
-			</a>
-			<a href="/contacto" class="px-6 py-3 border border-outline-variant text-on-surface font-mono text-sm rounded-lg hover:border-primary transition-colors">
-				Contacto
-			</a>
+		<div class="reveal hidden md:block" style="transition-delay: 200ms">
+			<HeroGraphic />
 		</div>
 	</section>
 	<section class="max-w-5xl mx-auto px-6 py-16 border-t border-outline-variant">
-		<p class="font-mono text-xs uppercase tracking-widest text-primary mb-2">Qué puedo resolver</p>
-		<h2 class="text-3xl font-bold text-on-surface mb-10">Servicios</h2>
+		<p class="reveal font-mono text-xs uppercase tracking-widest text-primary mb-2">Qué puedo resolver</p>
+		<h2 class="reveal text-3xl font-bold text-on-surface mb-12">Servicios</h2>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+		<div class="divide-y divide-outline-variant">
 			{services.map((service, index) => (
-				<div class="reveal p-6 border border-outline-variant rounded-lg bg-surface hover:border-primary/50 transition-colors" style={"`transition-delay: ${index * 100}ms`"}>
-					<div class="font-mono text-xs text-primary mb-2">{service.number}</div>
-					<h3 class="text-lg font-semibold text-on-surface mb-2">{service.title}</h3>
-					<p class="text-sm text-on-surface-variant">{service.description}</p>
+				<div class="reveal group grid grid-cols-1 md:grid-cols-12 gap-4 py-8 hover:pl-2 transition-all duration-300" style={`transition-delay: ${index * 100}ms`}>
+					<span class="md:col-span-2 font-mono text-4xl text-outline group-hover:text-primary transition-colors">
+						{service.number}
+					</span>
+					<h3 class="md:col-span-4 text-xl font-semibold text-on-surface self-center">
+						{service.title}
+					</h3>
+					<p class="md:col-span-6 text-on-surface-variant self-center">
+						{service.description}
+					</p>
 				</div>
 			))}
 		</div>
