@@ -1,11 +1,68 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const services = [
+	{
+		number: '01',
+		title: 'Facturación electrónica & ERP',
+		description: 'Errores de validación XML, CABYS mal clasificado, llaves criptográficas, notas de crédito/débito y capacitación de usuarios.',
+	},
+	{
+		number: '02',
+		title: 'Automatización de datos',
+		description: 'Scripts en Python que limpian, ordenan o migran datos entre Excel, bases de datos y reportes.',
+	},
+	{
+		number: '03',
+		title: 'Soporte técnico general',
+		description: 'Diagnóstico y resolución de problemas de hardware, software y redes.',
+	},
+	{
+		number: '04',
+		title: 'Herramientas a la medida',
+		description: 'Aplicaciones web pequeñas (Flask/SQLite) para llevar control de datos propios.',
+	},
+];
 ---
 
+
+
 <Layout>
-	<Welcome />
+	<section class="max-w-5xl mx-auto px-6 py-20">
+		<div class="reveal inline-flex items-center gap-2 mb-6 px-3 py-1 border border-primary/30 rounded-full">
+			<span class="w-2 h-2 rounded-full bg-primary"></span>
+			<span class="font-mono text-xs uppercase tracking-widest text-primary">Disponible</span>
+		</div>
+
+		<h1 class=" reveal text-5xl md:text-6xl font-bold text-on-surface mb-6 leading-tight" style="transition-delay: 100ms">
+			Rodrigo Linares
+		</h1>
+
+		<p class="reveal text-xl text-on-surface-variant max-w-2xl mb-8" style="transition-delay: 200ms">
+			Soporte técnico y automatización — especializado en ERP, facturación electrónica y scripts que ahorran horas de trabajo manual.
+		</p>
+
+		<div class="reveal flex gap-4" style="transition-delay: 300ms">
+			<a href="/proyectos" class="px-6 py-3 bg-primary text-on-primary font-mono text-sm rounded-lg hover:opacity-90 transition-opacity">
+				Ver proyectos
+			</a>
+			<a href="/contacto" class="px-6 py-3 border border-outline-variant text-on-surface font-mono text-sm rounded-lg hover:border-primary transition-colors">
+				Contacto
+			</a>
+		</div>
+	</section>
+	<section class="max-w-5xl mx-auto px-6 py-16 border-t border-outline-variant">
+		<p class="font-mono text-xs uppercase tracking-widest text-primary mb-2">Qué puedo resolver</p>
+		<h2 class="text-3xl font-bold text-on-surface mb-10">Servicios</h2>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			{services.map((service, index) => (
+				<div class="reveal p-6 border border-outline-variant rounded-lg bg-surface hover:border-primary/50 transition-colors" style={"`transition-delay: ${index * 100}ms`"}>
+					<div class="font-mono text-xs text-primary mb-2">{service.number}</div>
+					<h3 class="text-lg font-semibold text-on-surface mb-2">{service.title}</h3>
+					<p class="text-sm text-on-surface-variant">{service.description}</p>
+				</div>
+			))}
+		</div>
+	</section>
 </Layout>

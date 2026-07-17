@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+	{
+		title: 'PickLab',
+		year: '2026',
+		tag: 'Portafolio',
+		description: 'Sistema de análisis de value bets en apuestas deportivas. Empezó como un workbook de Excel con dashboard de KPIs y control de bankroll, y evolucionó a una aplicación web con integración de datos de fútbol en vivo.',
+		stack: ['Flask', 'SQLite', 'Jinja2', 'API-Football'],
+		link: 'https://github.com/Rodrigo250/picklab',
+	},
+];
+---
+
+<Layout>
+	<section class="reveal max-w-5xl mx-auto px-6 pt-20 pb-10">
+		<p class="reveal font-mono text-xs uppercase tracking-widest text-primary mb-3">Trabajo propio</p>
+		<h1 class="reveal text-4xl md:text-5xl font-bold text-on-surface mb-4" style="transition-delay: 200ms">Proyectos</h1>
+		<p class="reveal text-lg text-on-surface-variant max-w-xl" style="transition-delay: 300ms">
+			Herramientas que construí para resolver problemas reales — desde automatización hasta análisis de datos.
+		</p>
+	</section>
+
+	<section class="max-w-5xl mx-auto px-6 pb-24">
+		<div class="reveal grid grid-cols-1 gap-6" style="transition-delay: 100ms">
+			{projects.map((project) => (
+				<a href={project.link} target="_blank" rel="noopener" class="group block p-8 border border-outline-variant rounded-xl bg-surface hover:border-primary/60 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+					<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-300"></div>
+
+					<div class="relative flex justify-between items-start flex-wrap gap-3 mb-4">
+						<div class="flex items-center gap-3">
+							<h2 class="text-2xl font-bold text-on-surface group-hover:text-primary transition-colors">
+								{project.title}
+							</h2>
+							<span class="font-mono text-xs text-outline">{project.year}</span>
+						</div>
+						<span class="font-mono text-xs text-primary border border-primary/30 rounded-full px-3 py-1">
+							{project.tag}
+						</span>
+					</div>
+
+					<p class="relative text-on-surface-variant mb-6 max-w-2xl">
+						{project.description}
+					</p>
+
+					<div class="relative flex flex-wrap gap-2 mb-6">
+						{project.stack.map((tech) => (
+							<span class="font-mono text-xs text-secondary border border-outline-variant rounded px-2 py-1">
+								{tech}
+							</span>
+						))}
+					</div>
+
+					<div class="relative flex items-center gap-2 font-mono text-sm text-primary">
+						Ver repositorio
+						<span class="group-hover:translate-x-1 transition-transform">→</span>
+					</div>
+				</a>
+			))}
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const channels = [
+	{
+		label: 'Email',
+		value: 'rodrigoanaya0@gmail.com',
+		href: 'mailto:rodrigoanaya0@gmail.com',
+	},
+	{
+		label: 'LinkedIn',
+		value: 'linkedin.com/in/rodrigolinares0',
+		href: 'https://www.linkedin.com/in/rodrigolinares0',
+	},
+	{
+		label: 'GitHub',
+		value: 'github.com/Rodrigo250',
+		href: 'https://github.com/Rodrigo250',
+	},
+];
+---
+
+<Layout>
+	<section class="max-w-5xl mx-auto px-6 pt-20 pb-10">
+		<p class="reveal font-mono text-xs uppercase tracking-widest text-primary mb-3">Hablemos</p>
+		<h1 class="reveal text-4xl md:text-5xl font-bold text-on-surface mb-4" style="transition-delay: 200ms">Contacto</h1>
+		<p class="reveal text-lg text-on-surface-variant max-w-xl" style="transition-delay: 300ms">
+			¿Tienes un problema con facturación electrónica, un reporte que haces a mano cada mes, o algo que se pueda automatizar? Escríbeme.
+		</p>
+	</section>
+
+	<section class="max-w-5xl mx-auto px-6 pb-24">
+		<div class="reveal grid grid-cols-1 md:grid-cols-3 gap-4" style="transition-delay: 400ms">
+			{channels.map((channel) => (
+				<a href={channel.href} target="_blank" rel="noopener" class="group p-6 border border-outline-variant rounded-lg bg-surface hover:border-primary/60 hover:-translate-y-1 transition-all duration-300">
+					<p class="font-mono text-xs uppercase tracking-widest text-outline mb-3">
+						{channel.label}
+					</p>
+					<p class="text-on-surface group-hover:text-primary transition-colors break-all">
+						{channel.value}
+					</p>
+				</a>
+			))}
+		</div>
+	</section>
+</Layout>

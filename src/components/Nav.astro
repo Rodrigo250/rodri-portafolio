@@ -1,0 +1,21 @@
+---
+const links = [
+  { href: '/', label: 'Overview' },
+  { href: '/proyectos', label: 'Proyectos' },
+  { href: '/experiencia', label: 'Experiencia' },
+  { href: '/contacto', label: 'Contacto' },
+];
+---
+
+<nav class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur border-b border-outline-variant">
+  <div class="flex justify-between items-center max-w-5xl mx-auto px-6 h-16">
+    <a href="/" class="font-mono font-bold text-primary tracking-tight">RODRI</a>
+    <div class="flex gap-6">
+        {links.map((link) => (
+            <a href={link.href} class="font-mono text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">
+              {link.label}
+            </a>
+          ))}
+    </div>
+  </div>
+</nav>

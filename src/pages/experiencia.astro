@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const experience = [
+	{
+		period: '2024 — 2026',
+		role: 'Analista de Soporte Técnico L2',
+		company: 'Aptius Software',
+		description: 'Soporte a clientes en el ERP Administra (Grupo Argus): validación XML, consecutivos de factura, clasificación CABYS, certificados criptográficos, facturas de exoneración diplomática y gestión de permisos de usuario. Impartí capacitaciones a negocios nuevos sobre régimen tradicional y facturación electrónica ante Hacienda.',
+		tags: ['ERP', 'Facturación electrónica', 'CABYS', 'Soporte L2'],
+	},
+	{
+		period: 'Antes de Aptius',
+		role: 'Técnico de Hardware',
+		company: 'Independiente',
+		description: 'Diagnóstico y reparación de equipos. Base técnica que se extendió naturalmente hacia el soporte de software conforme fui asumiendo más responsabilidad en sistemas.',
+		tags: ['Hardware', 'Diagnóstico'],
+	},
+	{
+		period: 'Actualmente',
+		role: 'Formación en Cloud & DevOps',
+		company: 'Platzi — autodidacta',
+		description: 'Aprendizaje autodirigido, aplicando lo aprendido en proyectos propios como PickLab.',
+		tags: ['Cloud', 'DevOps', 'Python'],
+	},
+];
+---
+
+<Layout>
+	<section class="max-w-5xl mx-auto px-6 pt-20 pb-10">
+		<p class="reveal font-mono text-xs uppercase tracking-widest text-primary mb-3">Trayectoria</p>
+		<h1 class="reveal text-4xl md:text-5xl font-bold text-on-surface mb-4" style="transition-delay: 100ms">Experiencia</h1>
+		<p class="reveal text-lg text-on-surface-variant max-w-xl" style="transition-delay: 200ms">
+			De hardware a software: cómo fui construyendo mi perfil técnico paso a paso.
+		</p>
+	</section>
+
+	<section class="max-w-5xl mx-auto px-6 pb-24">
+		<div class="reveal relative border-l border-outline-variant pl-10 space-y-14" style="transition-delay: 100ms">
+			{experience.map((item, index) => (
+				<div class="relative group">
+					<div class="absolute -left-[45px] top-1 w-3 h-3 rounded-full bg-primary border-4 border-background group-hover:scale-125 transition-transform" ></div>
+
+					<span class="font-mono text-xs uppercase tracking-widest text-outline">
+						{item.period}
+					</span>
+
+					<h2 class="text-2xl font-bold text-on-surface mt-2 mb-1">
+						{item.role}
+					</h2>
+
+					<p class="font-mono text-sm text-primary mb-4">
+						{item.company}
+					</p>
+
+					<p class="text-on-surface-variant max-w-2xl mb-4">
+						{item.description}
+					</p>
+
+					<div class="flex flex-wrap gap-2">
+						{item.tags.map((tag) => (
+							<span class="font-mono text-xs text-secondary border border-outline-variant rounded px-2 py-1">
+								{tag}
+							</span>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+</Layout>
