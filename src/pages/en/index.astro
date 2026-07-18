@@ -1,31 +1,31 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import HeroGraphic from '../components/HeroGraphic.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import HeroGraphic from '../../components/HeroGraphic.astro';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = 'en';
 const t = useTranslations(lang);
 
 const services = [
 	{
 		number: '01',
-		title: 'Facturación electrónica & ERP',
-		description: 'Errores de validación XML, CABYS mal clasificado, llaves criptográficas, notas de crédito/débito y capacitación de usuarios.',
+		title: 'Electronic Invoicing & ERP',
+		description: 'XML validation errors, misclassified CABYS codes, cryptographic keys, credit/debit notes and user training.',
 	},
 	{
 		number: '02',
-		title: 'Automatización de datos',
-		description: 'Scripts en Python que limpian, ordenan o migran datos entre Excel, bases de datos y reportes.',
+		title: 'Data Automation',
+		description: 'Python scripts that clean, sort or migrate data between Excel, databases and reports.',
 	},
 	{
 		number: '03',
-		title: 'Soporte técnico general',
-		description: 'Diagnóstico y resolución de problemas de hardware, software y redes.',
+		title: 'General Technical Support',
+		description: 'Diagnosis and troubleshooting of hardware, software and network issues.',
 	},
 	{
 		number: '04',
-		title: 'Herramientas a la medida',
-		description: 'Aplicaciones web pequeñas (Flask/SQLite) para llevar control de datos propios.',
+		title: 'Custom Tools',
+		description: 'Small web applications (Flask/SQLite) to manage your own data.',
 	},
 ];
 ---
@@ -47,10 +47,10 @@ const services = [
 			</p>
 
 			<div class="reveal flex gap-4" style="transition-delay: 300ms">
-				<a href={lang === 'en' ? '/en/proyectos' : '/proyectos'} class="px-6 py-3 bg-primary text-on-primary font-mono text-sm rounded-lg hover:opacity-90 transition-opacity">
+				<a href="/en/proyectos" class="px-6 py-3 bg-primary text-on-primary font-mono text-sm rounded-lg hover:opacity-90 transition-opacity">
 					{t('hero.cta.proyectos')}
 				</a>
-				<a href={lang === 'en' ? '/en/contacto' : '/contacto'} class="px-6 py-3 border border-outline-variant text-on-surface font-mono text-sm rounded-lg hover:border-primary transition-colors">
+				<a href="/en/contacto" class="px-6 py-3 border border-outline-variant text-on-surface font-mono text-sm rounded-lg hover:border-primary transition-colors">
 					{t('hero.cta.contacto')}
 				</a>
 			</div>

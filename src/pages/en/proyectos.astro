@@ -1,16 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = 'en';
 const t = useTranslations(lang);
 
 const projects = [
 	{
 		title: 'PickLab',
 		year: '2026',
-		tag: 'Portafolio',
-		description: 'Sistema de análisis de value bets en apuestas deportivas. Empezó como un workbook de Excel con dashboard de KPIs y control de bankroll, y evolucionó a una aplicación web con integración de datos de fútbol en vivo.',
+		tag: 'Portfolio',
+		description: 'Value bet analysis system for sports betting. Started as an Excel workbook with a KPI dashboard and bankroll tracking, and evolved into a web app with live football data integration.',
 		stack: ['Flask', 'SQLite', 'Jinja2', 'API-Football'],
 		link: 'https://github.com/Rodrigo250/picklab',
 	},

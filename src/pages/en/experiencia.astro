@@ -1,30 +1,30 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = 'en';
 const t = useTranslations(lang);
 
 const experience = [
 	{
 		period: '2024 — 2026',
-		role: 'Analista de Soporte Técnico L2',
+		role: 'L2 Technical Support Analyst',
 		company: 'Aptius Software',
-		description: 'Soporte a clientes en el ERP Administra (Grupo Argus): validación XML, consecutivos de factura, clasificación CABYS, certificados criptográficos, facturas de exoneración diplomática y gestión de permisos de usuario. Impartí capacitaciones a negocios nuevos sobre régimen tradicional y facturación electrónica ante Hacienda.',
-		tags: ['ERP', 'Facturación electrónica', 'CABYS', 'Soporte L2'],
+		description: 'Supported clients on the Administra ERP (Grupo Argus): XML validation, invoice sequencing, CABYS classification, cryptographic certificates, diplomatic exemption invoices and user permission management. Trained new businesses on traditional tax regime and electronic invoicing requirements.',
+		tags: ['ERP', 'Electronic invoicing', 'CABYS', 'L2 Support'],
 	},
 	{
-		period: 'Antes de Aptius',
-		role: 'Técnico de Hardware',
-		company: 'Independiente',
-		description: 'Diagnóstico y reparación de equipos. Base técnica que se extendió naturalmente hacia el soporte de software conforme fui asumiendo más responsabilidad en sistemas.',
-		tags: ['Hardware', 'Diagnóstico'],
+		period: 'Before Aptius',
+		role: 'Hardware Technician',
+		company: 'Independent',
+		description: 'Diagnosis and repair of equipment. Technical foundation that naturally extended into software support as I took on more system responsibilities.',
+		tags: ['Hardware', 'Diagnostics'],
 	},
 	{
-		period: 'Actualmente',
-		role: 'Formación en Cloud & DevOps',
-		company: 'Platzi — autodidacta',
-		description: 'Aprendizaje autodirigido, aplicando lo aprendido en proyectos propios como PickLab.',
+		period: 'Currently',
+		role: 'Cloud & DevOps Training',
+		company: 'Platzi — self-taught',
+		description: 'Self-directed learning, applied to personal projects like PickLab.',
 		tags: ['Cloud', 'DevOps', 'Python'],
 	},
 ];
