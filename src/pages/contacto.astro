@@ -37,7 +37,7 @@ const channels = [
 	<section class="max-w-5xl mx-auto px-6 pt-20 pb-14 text-center">
 		<p class="reveal font-mono text-xs uppercase tracking-widest text-primary mb-4">{t('contacto.eyebrow')}</p>
 		<h1 class="reveal text-4xl md:text-6xl font-bold text-on-surface mb-4" style="transition-delay: 100ms">
-			<span id="rotating-text" class="text-primary">¿Necesitas soporte técnico?</span>
+			<span id="rotating-text" class="text-primary" data-phrases={JSON.stringify(['¿Necesitas soporte técnico?', '¿Un reporte que haces a mano?', '¿Problemas con Hacienda?', 'Hablemos.'])}>¿Necesitas soporte técnico?</span>
 		</h1>
 		<p class="reveal text-lg text-on-surface-variant max-w-xl mx-auto" style="transition-delay: 200ms">
 			{t('contacto.subtitle')}
@@ -86,7 +86,7 @@ const channels = [
 		</div>
 	</section>
 
-	<script>
+    <script>
 		function setupCopyButtons() {
 			document.querySelectorAll('[data-copy-btn]').forEach((btn) => {
 				btn.addEventListener('click', async (e) => {
@@ -105,41 +105,8 @@ const channels = [
 			});
 		}
 
-		function setupRotatingText() {
-			const phrases = [
-				'¿Necesitas soporte técnico?',
-				'¿Un reporte que haces a mano?',
-				'¿Problemas con Hacienda?',
-				'Hablemos.',
-			];
-			const el = document.getElementById('rotating-text') as HTMLElement;
-			if (!el) return;
-
-			let index = 0;
-			const interval = setInterval(() => {
-				index = (index + 1) % phrases.length;
-				el.style.opacity = '0';
-				setTimeout(() => {
-					el.textContent = phrases[index];
-					el.style.opacity = '1';
-				}, 300);
-			}, 2500);
-
-			document.addEventListener('astro:before-swap', () => clearInterval(interval), { once: true });
-		}
-
 		setupCopyButtons();
-		setupRotatingText();
-		document.addEventListener('astro:page-load', () => {
-			setupCopyButtons();
-			setupRotatingText();
-		});
+		document.addEventListener('astro:page-load', setupCopyButtons);
 	</script>
 
-	<style>
-		#rotating-text {
-			transition: opacity 0.3s ease;
-			display: inline-block;
-		}
-	</style>
 </Layout>

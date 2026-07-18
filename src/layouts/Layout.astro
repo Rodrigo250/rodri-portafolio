@@ -47,6 +47,32 @@ import { ClientRouter } from 'astro:transitions';
 		elements.forEach((el) => observer.observe(el));
 	}
 
-	setupReveal();
-	document.addEventListener('astro:page-load', setupReveal);
+	function setupRotatingText() {
+		const el = document.getElementById('rotating-text') as HTMLElement;
+		if (!el) return;
+
+		const raw = el.getAttribute('data-phrases');
+		if (!raw) return;
+		const phrases = JSON.parse(raw);
+
+		let index = 0;
+		const interval = setInterval(() => {
+			index = (index + 1) % phrases.length;
+			el.style.opacity = '0';
+			setTimeout(() => {
+				el.textContent = phrases[index];
+				el.style.opacity = '1';
+			}, 300);
+		}, 2500);
+
+		document.addEventListener('astro:before-swap', () => clearInterval(interval), { once: true });
+	}
+
+	function initPage() {
+		setupReveal();
+		setupRotatingText();
+	}
+
+	initPage();
+	document.addEventListener('astro:page-load', initPage);
 </script>

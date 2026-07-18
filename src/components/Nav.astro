@@ -28,7 +28,8 @@ const switchHref = otherLang === 'en'
 <nav class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur border-b border-outline-variant">
 	<div class="flex justify-between items-center max-w-5xl mx-auto px-6 h-16">
 		<a href={localizeHref('/')} class="font-mono font-bold text-primary tracking-tight">RODRI</a>
-		<div class="flex items-center gap-6">
+
+		<div class="hidden md:flex items-center gap-6">
 			{links.map((link) => (
 				<a href={localizeHref(link.href)} class="font-mono text-xs uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">
 					{t(link.key as any)}
@@ -38,5 +39,63 @@ const switchHref = otherLang === 'en'
 				{otherLang.toUpperCase()}
 			</a>
 		</div>
+
+		<button id="menu-toggle" class="md:hidden text-on-surface w-8 h-8 flex flex-col items-center justify-center gap-1.5" aria-label="Abrir menú">
+			<span class="menu-bar block w-6 h-px bg-current transition-transform"></span>
+			<span class="menu-bar block w-6 h-px bg-current transition-opacity"></span>
+			<span class="menu-bar block w-6 h-px bg-current transition-transform"></span>
+		</button>
+	</div>
+
+	<div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden transition-all duration-300 border-b border-outline-variant">
+		<div class="flex flex-col px-6 py-4 gap-4">
+			{links.map((link) => (
+				<a href={localizeHref(link.href)} class="font-mono text-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">
+					{t(link.key as any)}
+				</a>
+			))}
+			<a href={switchHref} class="font-mono text-sm text-primary border border-primary/30 rounded px-3 py-2 w-fit hover:bg-primary/10 transition-colors">
+				{otherLang.toUpperCase()}
+			</a>
+		</div>
 	</div>
 </nav>
+
+<script>
+	function setupMobileMenu() {
+		const toggle = document.getElementById('menu-toggle');
+		const menu = document.getElementById('mobile-menu');
+		if (!toggle || !menu) return;
+
+		let open = false;
+
+		toggle.addEventListener('click', () => {
+			open = !open;
+			menu.style.maxHeight = open ? `${menu.scrollHeight}px` : '0px';
+			toggle.classList.toggle('is-open', open);
+		});
+
+		menu.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => {
+				open = false;
+				menu.style.maxHeight = '0px';
+				toggle.classList.remove('is-open');
+			});
+		});
+	}
+
+	setupMobileMenu();
+	document.addEventListener('astro:page-load', setupMobileMenu);
+</script>
+
+<style>
+	#menu-toggle.is-open .menu-bar:nth-child(1) {
+		transform: translateY(6.5px) rotate(45deg);
+	}
+	#menu-toggle.is-open .menu-bar:nth-child(2) {
+		opacity: 0;
+	}
+	#menu-toggle.is-open .menu-bar:nth-child(3) {
+		transform: translateY(-6.5px) rotate(-45deg);
+	}
+</style>
